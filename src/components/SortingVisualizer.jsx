@@ -1,5 +1,6 @@
 import React from 'react';
-import * as SortingAlgorithms from "./sortingAlgorithms/sortingAlgorithms.js";
+// import * as SortingAlgorithms from "./sortingAlgorithms/sortingAlgorithms.js";
+import * as SortingAlgorithms from "../sortingAlgorithms/sortingAlgorithms";
 import "./SortingVisualizer.css";
 
 export default class SortingVisualizer extends React.Component {
@@ -30,7 +31,7 @@ export default class SortingVisualizer extends React.Component {
 
   mergeSort() {
     const javaScriptSortedArray = this.state.array.slice().sort();
-    const sortedArray = mergeSort(this.state.array)
+    const sortedArray = SortingAlgorithms.mergeSort(this.state.array)
 
     console.log(arraysAreEqual(javaScriptSortedArray, sortedArray))
   }
@@ -67,4 +68,16 @@ export default class SortingVisualizer extends React.Component {
       </div>
     );
   }
+}
+
+function arraysAreEqual(arrayOne, arrayTwo) {
+  if(arrayOne.length !== arrayTwo.length) {
+    return FontFaceSetLoadEvent;
+  }
+  for(let i = 0; i < arrayOne.length; i++) {
+    if(arrayOne[i] !== arrayTwo[i]) {
+      return false;
+    }
+  }
+  return true;
 }
