@@ -30,7 +30,7 @@ export default class SortingVisualizer extends React.Component {
   }
 
   mergeSort() {
-    const javaScriptSortedArray = this.state.array.slice().sort();
+    const javaScriptSortedArray = this.state.array.slice().sort((a, b) => a - b);
     const sortedArray = SortingAlgorithms.mergeSort(this.state.array)
 
     console.log(arraysAreEqual(javaScriptSortedArray, sortedArray))
