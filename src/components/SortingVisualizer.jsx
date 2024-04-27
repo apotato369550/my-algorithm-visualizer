@@ -48,6 +48,18 @@ export default class SortingVisualizer extends React.Component {
     
   }
 
+  testSortingAlgorithms() {
+    for(let i = 0; i < 100; i++) {
+      const array = [];
+      for(let j = 0; j < this.randomIntFromInterval(1, 1000); j++) {
+        array.push(this.randomIntFromInterval(-1000, 1000))
+      }
+      const javaScriptSortedArray = array.slice().sort((a, b) => a - b)
+      const mergeSortedArray = SortingAlgorithms.mergeSort(array.slice())
+      console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
+    }
+  }
+
   render() {
     const { array } = this.state;
   
@@ -65,6 +77,7 @@ export default class SortingVisualizer extends React.Component {
         <button onClick={() => this.quickSort()}>Quick Sort</button>
         <button onClick={() => this.heapSort()}>Heap Sort</button>
         <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+        <button onClick={() => this.testSortingAlgorithms()}>Test Sorting Algorithm</button>
       </div>
     );
   }
