@@ -34,6 +34,7 @@ export default class SortingVisualizer extends React.Component {
     const sortedArray = SortingAlgorithms.mergeSort(this.state.array)
 
     console.log(arraysAreEqual(javaScriptSortedArray, sortedArray))
+    const mergeSortAnimations = SortingAlgorithms.getMergeSortAnimations()
   }
 
   quickSort() {
