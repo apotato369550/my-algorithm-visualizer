@@ -15,7 +15,20 @@ function mergeSortHelper(mainArray, startIndex, endIndex, auxiliaryArray, animat
 }
 
 function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, animations) {
-    // do stuff here
+    let k = startIndex, i = startIndex, j = middleIndex + 1;
+    while (i <= middleIndex && j <= endIndex) {
+        animations.push([i, j]);
+        animations.push([i, j]);
+        if (auxiliaryArray[i] <= auxiliaryArray[j]) {
+            animations.push([k, auxiliaryArray[i++]])
+            mainArray[k++] = auxiliaryArray[i++]
+        } else {
+            animations.push([k, auxiliaryArray[j]])
+            mainArray[k++] = auxiliaryArray[j++]
+        }
+    }
+
+    // continue here
 }
 
 export const mergeSort = (array, startIndex, endIndex, animations = []) => {
