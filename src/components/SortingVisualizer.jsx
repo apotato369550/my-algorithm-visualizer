@@ -40,12 +40,12 @@ export default class SortingVisualizer extends React.Component {
    for (let i = 0; i < animations.length; i++) {
     const {comparison, swap} = animations[i];
     setTimeout(() => {
-      const arrayBars = document.getElementsByName('array-bar');
-      arrayBars[comparison[1]].style.backgroundClip = 'red';
-      arrayBars[comparison[0]].style.backgroundClip = "red";
+      const arrayBars = document.getElementsByClassName('array-bar');
+      arrayBars[comparison[1]].style.backgroundColor = 'red';
+      arrayBars[comparison[0]].style.backgroundColor = "red";
       setTimeout(() => {
-      arrayBars[comparison[1]].style.backgroundClip = "turquoise";
-      arrayBars[comparison[0]].style.backgroundClip = "turquoise";
+      //arrayBars[comparison[1]].style.backgroundColor = "turquoise";
+      //arrayBars[comparison[0]].style.backgroundColor = "turquoise";
       }, (i + 1) * 10)
     }, i * 10)
    }

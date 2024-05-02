@@ -10,7 +10,7 @@ function mergeSortHelper(mainArray, startIndex, endIndex, auxiliaryArray, animat
     if (startIndex == endIndex) return;
     const middleIndex = Math.floor((startIndex + endIndex) / 2);
     mergeSortHelper(auxiliaryArray, startIndex, middleIndex, mainArray, animations);
-    mergeSortHelper(auxiliaryArray, middleIndex + 1, endIndex, mainArray);
+    mergeSortHelper(auxiliaryArray, middleIndex + 1, endIndex, mainArray, animations);
     doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, animations)
 }
 
