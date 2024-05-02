@@ -1,4 +1,4 @@
-export function getMergeSortAnimations(array) {
+export function mergeSort(array) {
     const animations = [];
     if (array.length <= 1) return array;
     const auxiliaryArray = array.slice();
@@ -17,30 +17,34 @@ function mergeSortHelper(mainArray, startIndex, endIndex, auxiliaryArray, animat
 function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, animations) {
     let k = startIndex, i = startIndex, j = middleIndex + 1;
     while (i <= middleIndex && j <= endIndex) {
-        animations.push([i, j]);
-        animations.push([i, j]);
+        const animation = {};
+        animation.comparison = { i, j };
         if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-            animations.push([k, auxiliaryArray[i++]])
+            animation.swap = [k, i]
             mainArray[k++] = auxiliaryArray[i++]
         } else {
-            animations.push([k, auxiliaryArray[j]])
+            animation.swap = [k, j];
             mainArray[k++] = auxiliaryArray[j++]
         }
+        animations.push(animation);
     }
     while (i <= middleIndex) {
-        animations.push([i, i]);
-        animations.push([i, i]);
-        animations.push([k, auxiliaryArray[i]]);
+        animations.push({
+            comparison: [i, i],
+            swap: [k, i]
+        });
         mainArray[k++] = auxiliaryArray[i++];
     }
     while (j <= endIndex) {
-        animations.push([j, j]);
-        animations.push([j, j]);
-        animations.push([k, auxiliaryArray[j]]);
+        animations.push({
+          comparison: [j, j],
+          swap: [k, i],
+        });
         mainArray[k++] = auxiliaryArray[j++];
     }
-    // continue here
 }
+
+/*
 
 export const mergeSort = (array, startIndex, endIndex, animations = []) => {
     if(array.length === 1) return array;
@@ -61,3 +65,5 @@ export const mergeSort = (array, startIndex, endIndex, animations = []) => {
     while (j < secondHalf.length) sortedArray.push(secondHalf[j++]);
     return sortedArray;
 }
+
+*/
