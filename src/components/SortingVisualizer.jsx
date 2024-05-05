@@ -37,6 +37,13 @@ export default class SortingVisualizer extends React.Component {
     console.log(arraysAreEqual(javaScriptSortedArray, sortedArray))
     */
    const animations = SortingAlgorithms.mergeSort(this.state.array)
+   const newAnimations = [];
+   for (const animation of animations) {
+    newAnimations.push(aniamtion.comparison);
+    newAnimations.push(animation.comparison);
+    newAnimations.push(animation.swap)
+   }
+   
    for (let i = 0; i < animations.length; i++) {
     const {comparison, swap} = animations[i];
     setTimeout(() => {
