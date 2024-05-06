@@ -39,22 +39,32 @@ export default class SortingVisualizer extends React.Component {
    const animations = SortingAlgorithms.mergeSort(this.state.array)
    const newAnimations = [];
    for (const animation of animations) {
-    newAnimations.push(aniamtion.comparison);
+    newAnimations.push(animation.comparison);
     newAnimations.push(animation.comparison);
     newAnimations.push(animation.swap)
    }
    
    for (let i = 0; i < animations.length; i++) {
     const {comparison, swap} = animations[i];
-    setTimeout(() => {
-      const arrayBars = document.getElementsByClassName('array-bar');
-      arrayBars[comparison[1]].style.backgroundColor = 'red';
-      arrayBars[comparison[0]].style.backgroundColor = "red";
+    const arrayBars = document.getElementsByClassName('array-bar');
+    const [barOneIndex, barTwoIndex] = newAnimations(i);
+    const barOneStyle = arrayBars[barOneIndex].style;
+    const barTwoStyle = arrayBars[barTwoIndex].style;
+    const isColorChange = i % 3 !== 2;
+    
+    if (isColorChange) {
+      const color = i % 3 === 0 ? 'red' : 'turquoise';
       setTimeout(() => {
-      arrayBars[comparison[1]].style.backgroundColor = "turquoise";
-      arrayBars[comparison[0]].style.backgroundColor = "turquoise";
-      }, (i + 1) * 10)
-    }, i * 10)
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * 5);
+    } else {
+      setTimeout(() => {
+        const tempHeight = barOneStyle.height;
+        barOneStyle.height = barTwoStyle.height;
+        barTwoStyle.height = tempHeight;
+      }, i * 5);
+    }
    }
   }
 
