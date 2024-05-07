@@ -7,7 +7,7 @@ export function mergeSort(array) {
 }
 
 function mergeSortHelper(mainArray, startIndex, endIndex, auxiliaryArray, animations) {
-    if (startIndex == endIndex) return;
+    if (startIndex === endIndex) return;
     const middleIndex = Math.floor((startIndex + endIndex) / 2);
     mergeSortHelper(auxiliaryArray, startIndex, middleIndex, mainArray, animations);
     mergeSortHelper(auxiliaryArray, middleIndex + 1, endIndex, mainArray, animations);
@@ -20,10 +20,10 @@ function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, a
         const animation = {};
         animation.comparison = [i, j];
         if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-            animation.swap = [k, i]
+            animation.swap = [k, auxiliaryArray[i]]
             mainArray[k++] = auxiliaryArray[i++]
         } else {
-            animation.swap = [k, j];
+            animation.swap = [k, auxiliaryArray[j]];
             mainArray[k++] = auxiliaryArray[j++]
         }
         animations.push(animation);
@@ -31,14 +31,14 @@ function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, a
     while (i <= middleIndex) {
         animations.push({
             comparison: [i, i],
-            swap: [k, i]
+            swap: [k, auxiliaryArray[i]]
         });
         mainArray[k++] = auxiliaryArray[i++];
     }
     while (j <= endIndex) {
         animations.push({
           comparison: [j, j],
-          swap: [k, j],
+          swap: [k, auxiliaryArray[j]],
         });
         mainArray[k++] = auxiliaryArray[j++];
     }
