@@ -30,12 +30,6 @@ export default class SortingVisualizer extends React.Component {
   }
 
   mergeSort() {
-    /*
-    const javaScriptSortedArray = this.state.array.slice().sort((a, b) => a - b);
-    const sortedArray = SortingAlgorithms.mergeSort(this.state.array)
-
-    console.log(arraysAreEqual(javaScriptSortedArray, sortedArray))
-    */
    const animations = SortingAlgorithms.mergeSort(this.state.array)
    const newAnimations = [];
    for (const animation of animations) {
@@ -44,15 +38,14 @@ export default class SortingVisualizer extends React.Component {
     newAnimations.push(animation.swap)
    }
    
-   for (let i = 0; i < animations.length; i++) {
-    // const {comparison, swap} = animations[i];
+   for (let i = 0; i < newAnimations.length; i++) {
     const arrayBars = document.getElementsByClassName('array-bar');
-    const [barOneIndex, barTwoIndex] = newAnimations[i];
-    const barOneStyle = arrayBars[barOneIndex].style;
-    const barTwoStyle = arrayBars[barTwoIndex].style;
     const isColorChange = i % 3 !== 2;
     
     if (isColorChange) {
+      const [barOneIndex, barTwoIndex] = newAnimations[i];
+      const barOneStyle = arrayBars[barOneIndex].style;
+      const barTwoStyle = arrayBars[barTwoIndex].style;
       const color = i % 3 === 0 ? 'red' : 'blue';
       setTimeout(() => {
         barOneStyle.backgroundColor = color;
