@@ -70,7 +70,15 @@ export default class SortingVisualizer extends React.Component {
   }
 
   bubbleSort() {
-    
+    const animations = SortingAlgorithms.bubbleSort(this.state.array);
+    const newAnimations = [];
+    for (const animation of animations) {
+      // if not undefined, push to array
+      newAnimations.push(animation.comparison);
+      newAnimations.push(animation.comparison);
+      newAnimations.push(animation.swap);
+    }
+    console.log(newAnimations)
   }
 
   testSortingAlgorithms() {
